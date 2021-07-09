@@ -38,7 +38,7 @@ func init()  {
 }
 
 func usage() {
-	_, _ = fmt.Fprintf(os.Stdout, `兴业证券oss断点续传客户端: v1.0
+	_, _ = fmt.Fprintf(os.Stdout, `xyzqoss断点续传客户端: v1.0
 Options:
 `)
 	flag.PrintDefaults()
@@ -72,7 +72,7 @@ func main() {
 			os.Exit(-1)
 		}
 
-		// 设置分片大小为100 KB，指定分片上传并发数为3，并开启断点续传上传。
+		// 设置分片大小为100 MB，指定分片上传并发数为3，并开启断点续传上传。
 		// 其中<yourObjectName>与objectKey是同一概念，表示断点续传上传文件到OSS时需要指定包含文件后缀在内的完整路径，例如abc/efg/123.jpg。
 		// "LocalFile"为filePath，100*1024为partSize。
 		err = bucket.UploadFile(OssObjectPrefix + OssObjectName, LocalFile, OssPartSize, oss.Routines(Routines), oss.Checkpoint(true, ""))
